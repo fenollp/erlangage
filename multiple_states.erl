@@ -14,6 +14,7 @@ main() -> main(0).
 main(11) -> ok;
 main(N) ->
   self() ! N,
+  io:format("Sent ~p~n", [N]),
   receive
   M ->
     io:format("Received ~p~n", [M]),
