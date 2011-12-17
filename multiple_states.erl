@@ -13,4 +13,9 @@
 main() -> main(0).
 main(11) -> ok;
 main(N) ->
-  receive .
+  self() ! N,
+  receive
+  M ->
+    io:format("Received ~p~n", [M]),
+    main(N +1)
+  end.
