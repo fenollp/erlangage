@@ -15,7 +15,7 @@
 main() -> main(0).
 main(42) -> theAnswer;
 main(N) ->
-  Pid = spawn(fun() -> loop() end),
+  Pid = spawn(fun() -> loop(N) end),
   Pid ! N,
   io:format("Sent ~p~n", [N]),
   timer:sleep(1000),
