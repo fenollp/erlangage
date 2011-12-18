@@ -2,6 +2,8 @@
 %%% File    : multiple_states.erl
 %%% Author  : Pierre Fenoll ‹pierrefenoll@gmail.com›
 %%% Purpose : See multiple states of a looping function
+%%%           Is the function able to compute sth out of a receive case 
+%%%             while computing sth therein?
 %%% Date    : 17 Dec 2011
 %%%----------------------------------------------------------------------
 
@@ -16,7 +18,7 @@ main(N) ->
   self() ! N,
   io:format("Sent ~p~n", [N]),
   receive
-  M ->
+  M when ->
     io:format("Received ~p~n", [M]),
     main(N +1)
   end.
