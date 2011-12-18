@@ -19,7 +19,8 @@ main(N) ->
   Pid ! N,
   io:format("Sent ~p~n", [N]),
   timer:sleep(1000),
-  Pid ! N +1 =M,
+  N +1 =M,
+  Pid ! M,
   io:format("Sent ~p~n", [M]),
   timer:sleep(1000).
 
