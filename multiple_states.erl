@@ -13,13 +13,14 @@
 -export([main/0]).
 
 main() -> main(0).
-main(11) -> ok;
+main(42) -> ok;
 main(N) ->
   self() ! N,
   io:format("Sent ~p~n", [N]),
   timer:sleep(1),
   receive
-  M when ->
+  M when M rem 2 =:= 0 ->
     io:format("Received ~p~n", [M]),
-    main(N +1)
+    main(N +1);
+  _ -> main(N +3)
   end.
