@@ -17,7 +17,7 @@ main(42) -> ok;
 main(N) ->
   self() ! N,
   io:format("Sent ~p~n", [N]),
-  timer:sleep(100),
+  timer:sleep(1000),
   receive
   M when M rem 2 =:= 0 ->
     io:format("Received ~p~n", [M]),
