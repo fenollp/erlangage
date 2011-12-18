@@ -28,8 +28,13 @@ loop(N) ->
   M when M rem 2 =:= 0 ->
     io:format("Received ~p~n", [M]),
     timer:sleep(5000),
+    io:format("Outta da state~n"),
     loop(N +1);
   _M ->
     io:format("Nonobstant ~p~n", [_M]),
     loop(N +3)
   end.
+
+%%% Conclusion: Unhappily you get stuck inside a state when receiving messages,
+%%%               meaning you don't process waiting messages in parallel : as 
+%%%               if there were multiple instances of the function
