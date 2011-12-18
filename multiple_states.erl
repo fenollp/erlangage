@@ -13,14 +13,25 @@
 -export([main/0]).
 
 main() -> main(0).
-main(42) -> ok;
+main(42) -> theAnswer;
 main(N) ->
-  self() ! N,
+  Pid = spawn(fun() -> loop() end),
+  Pid ! N,
   io:format("Sent ~p~n", [N]),
   timer:sleep(1000),
+  Pid ! N +1 =M,
+  io:format("Sent ~p~n", [M]),
+  timer:sleep(1000).
+
+
+loop(N) ->
+  io:format("Haz ~p~n", [N]),
   receive
   M when M rem 2 =:= 0 ->
     io:format("Received ~p~n", [M]),
-    main(N +1);
-  _ -> main(N +3)
+    timer:sleep(5000),
+    loop(N +1);
+  _M ->
+    io:format("Nonobstant ~p~n", [_M]),
+    loop(N +3)
   end.
