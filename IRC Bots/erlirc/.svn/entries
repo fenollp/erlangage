@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="3"
+   name=""
+   committed-date="2008-09-26T02:31:17.159070Z"
+   url="svn://crunchyd.com/erlirc"
+   last-author="john"
+   kind="dir"
+   uuid="a1a19a9f-df55-0410-ad4e-dc4cdc292df8"
+   revision="3"/>
+<entry
+   committed-rev="3"
+   name="erlirc.erl"
+   text-time="2008-09-26T02:31:17.000000Z"
+   committed-date="2008-09-26T02:31:17.159070Z"
+   checksum="f97a75ae042861a593293f41934fcfa9"
+   last-author="john"
+   kind="file"
+   prop-time="2008-09-26T02:31:17.000000Z"/>
+</wc-entries>

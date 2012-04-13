@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wiki</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  </head>
+  <body>
+    <p>Un peu d'HTML...<br>
+    <erl>
+	out(_) ->
+		Hello = io_lib:format("Hello, ~p!", ["World"]),
+		{html, Hello}.
+    </erl>
+    <br/>Et encore du HTML...</p>
+  </body>
+</html>

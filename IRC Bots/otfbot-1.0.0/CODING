@@ -1,0 +1,74 @@
+======
+Coding
+======
+
+General guidelines
+------------------
+- Read, understand and apply PEP8 (check with pep8.py)
+- Write docstrings
+- Use logger instead of print, productivity code should contain
+  no prints (with very few exceptions)
+- Use logger.error and logger.crit only for messages which should
+  be reported as bug.
+- Be always aware of blocking code. Network access should be handled with
+  twisted's methods, file system access should be done in a thread
+
+Current Caveats
+---------------
+Services and plugins should work independently of their starting order
+
+- Services should not depend on other services in the constructor. They may
+  depend on other services being instanced (__init__) but not started
+  (startService) in their startService method.
+- Plugins may depend on other Plugins, but not in their constructor
+
+HowTo ...
+---------
+- get a reference ...
+  - to the application object / your parent
+    every service / plugin gets in __init__ root (application) and parent (its parent).
+    save it into a class variable
+  - to a service
+    root.getServiceNamed('name')
+  - to a ircClient plugin
+    ircClientService.namedService['networkname'].protocol.plugins[i]
+  - to a ircServer plugin
+    ircServerService.instances[i].plugins[j]
+- let a service depend on another service to be loaded
+add Meta info to the file:
+class Meta:
+    depends=['otherservice']
+
+- let a service depend on a python module
+just import the module,  if the module is missing, the bot logs a WARNING and does not start the service:
+    i.e WARNING  Service xmppClient cannot be loaded because of missing module: No module named wokkel.xmppim
+
+- provide a better error message on missing python modules
+import the module with a wrapper around the import error, raise a new ImportError with better description:
+try:
+    import somemodule
+except ImportError, e:
+    raise ImportError(unicode(e)+". Download it from http://example.com")
+now the bot will log the new ImportError
+
+- let a plugin depend on a service/python module/other plugin
+use the pluginSupport.depends_on_... methods in __init__. if it fails, the plugin will not be instanced.
+i.e.
+
+def __init__(self, bot):
+    self.bot=bot
+    self.bot.depends_on_module("pysvn", "without pysvn i'm useless")
+
+caveat: if you use depend_on_plugin in init, it only checks if the other plugin will be loaded.
+the other plugin is guaranted to be instanced when your plugin gets the .start() callback, but maybe the
+other plugin did not yet get the .start() callback.
+
+- translate a plugin
+    - mark translatable strings with _(...)
+    - run pygettext . to get a messages.pot
+    - translate
+    - put messages.pot in locale/XY/LC_MESSAGES/otfbot.po
+    - use msgfmt otfbot.po to generate the binary translation file otfbot.mo
+    - make sure your $LANG/$LC_* environment variables are set correctly
+    - run the bot
+    - enjoy the translated messages

@@ -1,0 +1,4 @@
+settings.cfg
+*.beam
+ebin/
+deps/

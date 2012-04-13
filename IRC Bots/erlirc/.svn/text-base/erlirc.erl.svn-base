@@ -1,0 +1,28 @@
+
+-module(erlirc).
+
+-author("John Haugeland - stonecypher@gmail.com").
+-webpage("http://erlirc.com/").
+-license( {mit_license, "http://.../license.html"} ).  % proprietary or { licensename, "url" }
+
+-publicsvn("svn://crunchyd.com/scutil").
+-bugtracker(none).
+-publicforum(none).
+
+-svn_id("$Id$").
+-svn_head("$HeadURL$").
+-svn_revision("$Revision$").
+
+-description("").
+
+
+
+
+
+-testerl_export( { [], "" } ).   %  no_testsuite or { [], "foo_testsuite.erl" }
+
+
+
+
+
+-export( [] ).

@@ -1,0 +1,6 @@
+-define(VERSION, "http://github.com/gdamjan/erlang-irc-bot").
+-define(REALNAME, "An experimental Erlang IRC bot").
+-define(QUITMSG, "Shutting down the universe...").
+-define(TCPTIMEOUT, 60000). % 1min
+-define(KEEPALIVE, 60000). % 1min
+-define(CRNL, "\r\n").
