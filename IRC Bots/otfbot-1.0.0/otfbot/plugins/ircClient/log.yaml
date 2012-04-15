@@ -1,3 +1,0 @@
-log.path: "$n-$c/$y-$m-$d.log"
-log.logdir: "."
-log.logPrivate: True

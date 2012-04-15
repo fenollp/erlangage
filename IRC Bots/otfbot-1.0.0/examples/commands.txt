@@ -1,2 +1,0 @@
-ping=pong
-ping_=pings OTHER
