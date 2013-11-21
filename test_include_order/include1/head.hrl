@@ -1,0 +1,1 @@
+-define(A, io:format("include1\n")).
