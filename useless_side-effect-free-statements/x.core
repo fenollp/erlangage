@@ -1,0 +1,24 @@
+module 'x' ['module_info'/0,
+	    'module_info'/1,
+	    'y'/0,
+	    'z'/0]
+    attributes []
+'y'/0 =
+    %% Line 5
+    fun () ->
+	%% Line 11
+	'bad'
+'z'/0 =
+    %% Line 13
+    fun () ->
+	%% Line 14
+	'good'
+'module_info'/0 =
+    fun () ->
+	call 'erlang':'get_module_info'
+	    ('x')
+'module_info'/1 =
+    fun (_cor0) ->
+	call 'erlang':'get_module_info'
+	    ('x', _cor0)
+end
