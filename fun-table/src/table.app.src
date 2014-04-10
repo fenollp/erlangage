@@ -1,0 +1,14 @@
+{application, table,
+ [
+  {description, "An Erlang table library"},
+  {vsn, "1"},
+  {modules, [
+             table
+            ]},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {env, []}
+ ]}.

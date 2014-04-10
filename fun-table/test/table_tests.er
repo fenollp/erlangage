@@ -1,0 +1,39 @@
+%% Copyright © 2014 Pierre Fenoll ‹pierrefenoll@gmail.com›
+%% See LICENSE for licensing information.
+%% -*- coding: utf-8 -*-
+-module(table_tests).
+
+%% table_tests: tests for module table.
+
+-include_lib("eunit/include/eunit.hrl").
+
+-define(zilch, empty_table).
+-define(m, table).
+
+%% API tests.
+
+new_test () ->
+    ?assertEqual(?m:new(), ?zilch).
+
+add_from_empty_test () ->
+    Table0 = ?m:new(),
+    Table  = ?m:add(key, value, Table0),
+    ?assertEqual(Table(key), value).
+
+%% add_from_filled_test_ () ->
+%%     Table0 = ?m:new(),
+%%     Table  = ?m:add(key, value, Table0),
+%%     Table2 = ?m:add(key2, value2, Table),
+%%     [ ?assertEqual(Table (key),  value)
+%%     , ?assertEqual(Table2(key2), value2) ].
+
+fetch_from_empty_test () ->
+    ?assertEqual(?m:new(), ?zilch).
+
+fetch_from_filled_test_ () ->
+    Table0 = ?m:new(),
+    Table  = ?m:add(key, value, Table0),
+    [ ?assertEqual(?m:fetch(key, default, Table), value)
+    , ?assertEqual(?m:fetch(yek, default, Table), default) ].
+
+%% End of Module.
