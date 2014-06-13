@@ -1,0 +1,14 @@
+{application, webserver,
+ [
+  {description, "An Erlang webserver library"},
+  {vsn, "1"},
+  {modules, [
+             webserver
+            ]},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {env, []}
+ ]}.
