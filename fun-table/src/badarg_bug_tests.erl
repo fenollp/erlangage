@@ -1,1 +1,0 @@
-test/badarg_bug_tests.erl
