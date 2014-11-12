@@ -8,6 +8,7 @@ erl.mk:
 
 clean: clean-ebin
 distclean: clean clean-deps
+	$(if $(wildcard erl.mk), rm erl.mk)
 
 .PHONY: distclean clean debug test
 
