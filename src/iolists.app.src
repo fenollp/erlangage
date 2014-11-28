@@ -1,0 +1,14 @@
+{application, iolists,
+ [
+  {description, "An Erlang iolists library"},
+  {vsn, "1"},
+  {modules, [
+             iolists
+            ]},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {env, []}
+ ]}.
