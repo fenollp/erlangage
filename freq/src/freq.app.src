@@ -1,0 +1,14 @@
+{application, freq,
+ [
+  {description, "An Erlang freq library"},
+  {vsn, "1"},
+  {modules, [
+             freq
+            ]},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {env, []}
+ ]}.
