@@ -63,6 +63,10 @@ filtermap (F, IoList)
     <<E>> = E0,
     pick(F, E) ++ filtermap(F, Rest);
 filtermap (F, IoList)
+  when is_tuple(IoList) ->
+    Size = tuple_size(IoList),
+    v_t(F, IoList, Size, Size);
+filtermap (F, IoList)
   when is_number(IoList) ->
     pick(F, IoList).
 
@@ -111,6 +115,17 @@ size (IoList)
 
 %% Internals
 
+pick (Fun, Elt) ->
+    case Fun(Elt) of
+        false -> [];
+        true -> [Elt];
+        {true,E2} -> [E2]
+    end.
+
+v_t (_, _, _, 0) -> [];
+v_t (F, T, S, N) ->
+    filtermap(F, element(S-N+1,T)) ++ v_t(F, T, S, N-1).
+
 %% //github.com/uwiger/sext/blob/e04c3dd07e903172ff215ad9ba08e6afbad717b2/src/sext.erl#L509-L520
 int_to_binary (I) when I =< 16#ff -> <<I:8>>;
 int_to_binary (I) when I =< 16#ffff -> <<I:16>>;
@@ -124,12 +139,5 @@ int_to_binary (I) ->
     %% Realm of the ridiculous
     list_to_binary(
       lists:dropwhile(fun(X) -> X==0 end, binary_to_list(<<I:256>>))).
-
-pick (Fun, Elt) ->
-    case Fun(Elt) of
-        false -> [];
-        true -> [Elt];
-        {true,E2} -> [E2]
-    end.
 
 %% End of Module.

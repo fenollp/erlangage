@@ -50,12 +50,15 @@ filtermap_test_ () ->
     Intricate = fun
                     (X) when X < 5 -> false;
                     (X) when X > 5 -> true;
-                    (X) -> {true,cinq}
+                    (_) -> {true,cinq}
                 end,
+    Even = fun (X) -> X rem 2 == 0 end,
     [ ?_assertEqual( [1,2]
                    , iolists:filtermap(LETwo, [1,2,3,4]))
     , ?_assertEqual( [cinq,6,7,8,9,10]
-                   , iolists:filtermap(Intricate, lists:seq(1,10))) ].
+                   , iolists:filtermap(Intricate, lists:seq(1,10)))
+    , ?_assertEqual( [2,4,6,8]
+                   , iolists:filtermap(Even, lists:seq(1,4)++[{5,6},{8},{}])) ].
 
 %% Internals
 
