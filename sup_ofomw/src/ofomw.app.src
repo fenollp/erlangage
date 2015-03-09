@@ -1,0 +1,12 @@
+{application, ofomw,
+ [
+  {description, ""},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { ofomw_app, []}},
+  {env, []}
+ ]}.
