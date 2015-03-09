@@ -7,6 +7,11 @@
                   kernel,
                   stdlib
                  ]},
-  {mod, { ofomw_app, []}},
+  {mod, { ofomw_app, [ ofomw
+                     , ofomw_app
+                     , ofomw_sup
+                     , ofomw_worker_a
+                     , ofomw_worker_b
+                     ]}},
   {env, []}
  ]}.
