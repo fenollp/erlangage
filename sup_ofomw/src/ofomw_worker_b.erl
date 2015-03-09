@@ -15,7 +15,8 @@
 
 start_link(Args) ->
     io:format("~s:start_link Args = ~p\n", [?MODULE,Args]),
-    gen_server:start_link({local,?MODULE}, ?MODULE, Args, []).
+    {the_arg, Arg} = Args,
+    gen_server:start_link({local,Arg}, ?MODULE, Args, []).
 
 init(Args) ->
     io:format("~s:init Args = ~p\n", [?MODULE,Args]),
