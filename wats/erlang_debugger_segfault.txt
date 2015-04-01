@@ -1,0 +1,10 @@
+17.3
+Erlang/OTP 17 [erts-6.2] [source] [64-bit] [smp:4:4] [async-threads:10] [hipe] [kernel-poll:false]
+
+Eshell V6.2  (abort with ^G)
+1> debugger:start().
+{ok,<0.39.0>}
+2>
+User switch command
+ --> q
+make: *** [debug] Segmentation fault: 11
