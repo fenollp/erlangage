@@ -1,0 +1,12 @@
+{application, forget,
+ [
+  {description, "A inspectortron application useful for quickly troubleshooting issues"},
+  {vsn, "1.0.0"},
+  {modules, [forget]},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {env, []}
+ ]}.
