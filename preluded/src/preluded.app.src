@@ -1,0 +1,14 @@
+{application, preluded,
+ [
+  {description, "An Erlang preluded library"},
+  {vsn, "1"},
+  {modules, [
+             preluded
+            ]},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {env, []}
+ ]}.
